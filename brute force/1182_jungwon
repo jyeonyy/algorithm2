@@ -1,0 +1,24 @@
+N, S = map(int,input().split());
+
+nums = list(map(int,input().split()))
+global count
+count = 0
+
+def fun (nums,me,idx):
+    if idx > N-1:
+        return
+    me.append(nums[idx])
+    sum = 0
+    for i in me:
+        sum += i
+
+    if sum == S:
+        global count
+        count += 1
+    fun(nums,me,idx+1)
+    me.pop()
+    fun(nums,me,idx+1)
+
+me =[]
+fun(nums,me,0)
+print(count)
